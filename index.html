@@ -12,21 +12,24 @@
 
 <body>
   <!-- NAVBAR -->
-  <nav>
-    <div class="nav-left">
-      <i title="menu" class="fas fa-bars"></i>
-      <i title="home" class="fas fa-home"></i>
-    </div>
-    <div class="nav-right"> 
-      <a title="github" target="_blank" href="https://github.com/GabrielHangor/to-do-list"><i class="fab fa-github-alt"></i></a>
-      <a title="linkedin" target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
-      <a title="facebook" target="_blank" href="#"><i class="fab fa-facebook-square"></i></a>
-    </div>
-  </nav>
-  <main>
-    <div class="left-menu"></div>
-    <div class="main-content"></div>
-  </main>
+  <div class="container">
+    <nav>
+      <div class="nav-left">
+        <i id="hamburgerIcon" title="menu" class="fas fa-bars"></i>
+        <i title="home" class="fas fa-home"></i>
+      </div>
+      <div class="nav-right">
+        <a title="github" target="_blank" href="https://github.com/GabrielHangor/to-do-list"><i class="fab fa-github-alt"></i></a>
+        <a title="linkedin" target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
+        <a title="facebook" target="_blank" href="#"><i class="fab fa-facebook-square"></i></a>
+      </div>
+    </nav>
+    <!-- MAIN CONTENT -->
+    <main>
+      <div class="sidebar"></div>
+      <div class="main-content"></div>
+    </main>
+  </div>
 
   <script src="main.js"></script>
 </body>
