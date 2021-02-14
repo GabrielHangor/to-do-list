@@ -1,0 +1,1 @@
+(()=>{"use strict";!function(){const e=document.querySelector(".sidebar"),t=document.querySelector(".main-content");document.querySelector("#hamburgerIcon").addEventListener("click",(function(){e.classList.toggle("sidebar-toggle"),t.classList.toggle("main-content-toggle")}))}()})();
