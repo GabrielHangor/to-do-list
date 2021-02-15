@@ -26,6 +26,7 @@ nav {
 }
 
 .nav-left {
+  display: flex;
   margin-left: 1%;
 }
 
@@ -55,6 +56,40 @@ nav {
 
 .nav-right > a > i:hover {
   background-color: white;
+}
+
+.menu-bars {
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.menu-bars:hover {
+  background-color: white;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  background-color: #6b6b6b;
+  width: 30px;
+  height: 2px;
+  margin: 8px;
+  transition: 0.4s;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+  transform: rotate(-45deg) translate(-7px, 8px);
+}
+
+/* Fade out the second bar */
+.change .bar2 {
+  opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+  transform: rotate(45deg) translate(-6px, -8px);
 }
 
 /* MAIN CONTENT */
