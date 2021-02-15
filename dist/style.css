@@ -73,7 +73,7 @@ nav {
   background-color: #6b6b6b;
   width: 30px;
   height: 2px;
-  margin: 8px;
+  margin: 8px 6px;
   transition: 0.4s;
 }
 
@@ -102,6 +102,9 @@ main {
   width: 300px;
   background-color: #cecece;
   transition: all 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-content {
@@ -115,4 +118,33 @@ main {
 
 .main-content-toggle {
   margin-left: -300px;
+}
+
+.sidebar-container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 90%;
+  row-gap: 1rem;
+  list-style: none;
+}
+
+.sidebar-container > li {
+  width: 100%;
+  height: auto;
+}
+
+.projects {
+  display: flex;
+  align-items: center;
+}
+
+.projects > p {
+  font-size: 1.5rem;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
 }
