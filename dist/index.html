@@ -11,6 +11,18 @@
 </head>
 
 <body>
+  <!-- Project Input Modal -->
+  <form class="form-container-project">
+    <h1>New Project</h1>
+    <div class="form-group">
+      <label for="name">Project Name</label>
+      <input type="text" id="name" placeholder="Enter Project Name" required minlength="3" maxlength="20">
+    </div>
+    <div class="project-buttons">
+      <button type="button" class="project-cancel-btn">Cancel</button>
+      <button type="submit" class="project-submit-btn">Add Project</button>
+    </div>
+  </form>
   <!-- NAVBAR -->
   <div class="container">
     <nav>
@@ -34,11 +46,12 @@
         <ul class="sidebar-container">
           <!-- PROJECTS -->
           <li class="projects-container">
-            <p>Projects</p>
+            <div class="projects-header">
+              <p>Projects</p>
+              <button class="add-project-btn">+</button>
+            </div>
             <ul class="projects">
-              <li class="project">Hello world</li>
-              <li class="project">Hello gavno</li>
-              <li class="project">Hello zalupa</li>
+              <!-- <li class="project">Hello world</li> -->
             </ul>
           </li>
         </ul>

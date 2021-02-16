@@ -13,4 +13,8 @@ const sideBarToggle = (function () {
   menuBars.addEventListener("click", toggleSidebar);
 })();
 
+// Add project button modal
+
+
+
 export { sideBarToggle };
