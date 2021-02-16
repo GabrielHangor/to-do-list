@@ -6,8 +6,8 @@ body {
   padding: 0;
   font-family: "Roboto", sans-serif;
   color: #f1f0e9;
-  background-color: whitesmoke;
-  color: #6b6b6b;
+  background-color: #e6f4f1;
+  color: #334b48;
 }
 
 .container {
@@ -18,7 +18,7 @@ body {
 /* NAVBAR */
 nav {
   width: 100%;
-  background-color: #e6e6e6;
+  background-color: #78fac6;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,7 +35,7 @@ nav {
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 10px;
-  color: #6b6b6b;
+  color: #334b48;
 }
 
 .nav-left > i:hover {
@@ -51,7 +51,7 @@ nav {
   cursor: pointer;
   padding: 0.3rem;
   border-radius: 10px;
-  color: #6b6b6b;
+  color: #334b48;
 }
 
 .nav-right > a > i:hover {
@@ -92,15 +92,11 @@ nav {
   transform: rotate(45deg) translate(-6px, -8px);
 }
 
-/* MAIN CONTENT */
-main {
-  display: flex;
-  height: 94vh;
-}
+/* SIDEBAR */
 
 .sidebar {
   width: 300px;
-  background-color: #cecece;
+  background-color: #b3ffa0;
   transition: all 0.3s ease-in-out;
   display: flex;
   justify-content: center;
@@ -134,17 +130,29 @@ main {
 .sidebar-container > li {
   width: 100%;
   height: auto;
-}
-
-.projects {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.projects > p {
-  font-size: 1.5rem;
+.projects-container > p {
+  font-size: 1.8rem;
   margin: 0;
   width: 100%;
   text-align: center;
-  cursor: pointer;
+}
+
+.projects {
+  list-style-type: square;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  padding: 1rem 0 1rem 3rem;
+}
+
+/* MAIN CONTENT */
+
+main {
+  display: flex;
+  height: 94vh;
 }
