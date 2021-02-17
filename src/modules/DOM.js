@@ -6,6 +6,8 @@ const UISelectors = {
   projectModalEl: document.querySelector(".form-container-project"),
   addProjectBtn: document.querySelector(".add-project-btn"),
   projectCancelBtn: document.querySelector(".project-cancel-btn"),
+  projectNameInput: document.querySelector(".project-name-input"),
+  projectSubmitBtn: document.querySelector(".project-submit-btn"),
 };
 
 function getUISelectors() {
@@ -23,4 +25,8 @@ function toggleProjectModal() {
   UISelectors.container.classList.toggle("container-opaque");
 }
 
-export default { getUISelectors, toggleSidebar, toggleProjectModal };
+function getProjectName() {
+  return UISelectors.projectNameInput.value;
+}
+
+export default { getUISelectors, toggleSidebar, toggleProjectModal, getProjectName };
