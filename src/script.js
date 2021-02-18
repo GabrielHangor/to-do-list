@@ -7,14 +7,16 @@ function loadEventListeners() {
   UISelectors.menuBars.addEventListener("click", DOMCtrl.toggleSidebar);
   UISelectors.addProjectBtn.addEventListener('click', DOMCtrl.toggleProjectModal);
   UISelectors.projectCancelBtn.addEventListener('click', DOMCtrl.toggleProjectModal);
-  UISelectors.projectSubmitBtn.addEventListener("click", projectAddSubmit);
+  UISelectors.projectModalEl.addEventListener("submit", projectAddSubmit);
 }
 
-function projectAddSubmit() {
+function projectAddSubmit(e) {
   const projectName = DOMCtrl.getProjectName();
-  const newProject = Logic.getProject(projectName)
-  console.log(newProject);
+  Logic.createNewProject(projectName);
+  DOMCtrl.renderSidebar(Logic.data);
   DOMCtrl.toggleProjectModal();
+
+  e.preventDefault();
 }
 
 

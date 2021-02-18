@@ -5,18 +5,18 @@ class Project {
   }
 
   addProject() {
-    projects.push(this);
+    data.push(this);
   }
 }
 
-const projects = [];
+const data = [];
 
-function getProject(name) {
+function createNewProject(name) {
   const newProject = new Project(name);
   newProject.addProject();
-  console.log(projects)
+  console.log(data);
 
   return newProject;
 }
 
-export default { Project, getProject };
+export default { data, createNewProject };
