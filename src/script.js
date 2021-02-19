@@ -19,7 +19,9 @@ function projectAddSubmit(e) {
   e.preventDefault();
 }
 
-
+function deleteProject() {
+  
+}
 
 
 

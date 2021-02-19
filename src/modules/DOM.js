@@ -34,11 +34,26 @@ function getProjectName() {
 function renderSidebar(data) {
   UISelectors.projectsListEl.textContent = "";
 
-  data.forEach((project) => {
+  data.forEach((project, index) => {
     const name = project.name;
+
     const projectEl = document.createElement("li");
     projectEl.className = "project";
-    projectEl.textContent = `${name}`;
+    const todosNumberElSpan = document.createElement("span");
+    todosNumberElSpan.className = "project-todos-number";
+    const todosNumberElP = document.createElement("p");
+    todosNumberElP.textContent = "3";
+    const projectName = document.createElement("p");
+    projectName.className = "project-name";
+    projectName.textContent = `${name}`;
+    const projectDeleteBtn = document.createElement("i");
+    projectDeleteBtn.id = "delete-project-btn";
+    projectDeleteBtn.className = "fas fa-trash";
+
+    projectEl.setAttribute("data-index", index);
+
+    todosNumberElSpan.appendChild(todosNumberElP);
+    projectEl.append(todosNumberElSpan, projectName, projectDeleteBtn);
     UISelectors.projectsListEl.appendChild(projectEl);
   });
 
@@ -46,7 +61,9 @@ function renderSidebar(data) {
 }
 
 function clearProjectInput() {
-  UISelectors.projectNameInput.value = "";
+  setTimeout(() => {
+    UISelectors.projectNameInput.value = "";
+  }, 1000);
 }
 
 export default {
