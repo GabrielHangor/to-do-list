@@ -5,9 +5,16 @@ function loadEventListeners() {
   const UISelectors = DOMCtrl.getUISelectors();
 
   UISelectors.menuBars.addEventListener("click", DOMCtrl.toggleSidebar);
-  UISelectors.addProjectBtn.addEventListener('click', DOMCtrl.toggleProjectModal);
-  UISelectors.projectCancelBtn.addEventListener('click', DOMCtrl.toggleProjectModal);
+  UISelectors.addProjectBtn.addEventListener(
+    "click",
+    DOMCtrl.toggleProjectModal
+  );
+  UISelectors.projectCancelBtn.addEventListener(
+    "click",
+    DOMCtrl.toggleProjectModal
+  );
   UISelectors.projectModalEl.addEventListener("submit", projectAddSubmit);
+  UISelectors.projectsListEl.addEventListener("click", deleteProject);
 }
 
 function projectAddSubmit(e) {
@@ -19,11 +26,13 @@ function projectAddSubmit(e) {
   e.preventDefault();
 }
 
-function deleteProject() {
-  
+function deleteProject(e) {
+  if (e.target.id === "delete-project-btn") {
+    const index = DOMCtrl.getProjectIndex(e);
+    Logic.deleteProjectFromDataArray(index);
+    DOMCtrl.renderSidebar(Logic.data);
+  }
 }
-
-
 
 function init() {
   loadEventListeners();

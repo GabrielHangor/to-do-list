@@ -19,4 +19,8 @@ function createNewProject(name) {
   return newProject;
 }
 
-export default { data, createNewProject };
+function deleteProjectFromDataArray(index) {
+  data.splice(index, 1);
+}
+
+export default { data, createNewProject, deleteProjectFromDataArray };

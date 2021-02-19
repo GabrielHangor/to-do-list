@@ -66,10 +66,16 @@ function clearProjectInput() {
   }, 1000);
 }
 
+function getProjectIndex(event) {
+  const projectIndex = event.target.parentElement.getAttribute("data-index");
+  return projectIndex;
+}
+
 export default {
   getUISelectors,
   toggleSidebar,
   toggleProjectModal,
   getProjectName,
   renderSidebar,
+  getProjectIndex,
 };
