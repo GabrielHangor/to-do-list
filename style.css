@@ -166,6 +166,16 @@ nav {
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  padding-left: 0.1rem;
+  padding-right: 0.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.project:hover {
+  background-color: rgba(212, 212, 212, 0.342);
 }
 
 .project-todos-number {
@@ -282,4 +292,33 @@ button:active {
 main {
   display: flex;
   height: 94vh;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-content-container {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 30px 10px rgba(177, 177, 177, 0.4);
+  width: 40%;
+  height: 90%;
+  border-radius: 1rem;
+}
+
+.current-project-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  padding: 1rem;
+  border-bottom: solid 2px white;
+}
+
+.todos-container {
+  height: 100%;
+  display: grid;
+  
 }
