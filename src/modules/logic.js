@@ -5,22 +5,22 @@ class Project {
   }
 
   addProject() {
-    data.push(this);
+    data.projects.push(this);
   }
 }
 
-const data = [];
+const data = { projects: [], currentProject: null };
 
 function createNewProject(name) {
   const newProject = new Project(name);
   newProject.addProject();
-  console.log(data);
+  console.log(data.projects);
 
   return newProject;
 }
 
 function deleteProjectFromDataArray(index) {
-  data.splice(index, 1);
+  data.projects.splice(index, 1);
 }
 
 export default { data, createNewProject, deleteProjectFromDataArray };
