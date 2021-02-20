@@ -15,6 +15,7 @@ function loadEventListeners() {
   );
   UISelectors.projectModalEl.addEventListener("submit", projectAddSubmit);
   UISelectors.projectsListEl.addEventListener("click", deleteProject);
+  UISelectors.projectsListEl.addEventListener("click", displayCurrentProject);
 }
 
 function projectAddSubmit(e) {
@@ -34,7 +35,14 @@ function deleteProject(e) {
   }
 }
 
-// вывод окна текущего выбранного проекта
+function displayCurrentProject(e) {
+  if (e.target.className === "project-name") {
+    const index = DOMCtrl.getProjectIndex(e);
+    Logic.setCurrentProject(index);
+    DOMCtrl.renderMainContent(Logic.data);
+    console.log(Logic.data);
+  }
+}
 
 function init() {
   loadEventListeners();

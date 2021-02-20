@@ -9,6 +9,7 @@ const UISelectors = {
   projectNameInput: document.querySelector(".project-name-input"),
   projectSubmitBtn: document.querySelector(".project-submit-btn"),
   projectsListEl: document.querySelector(".projects"),
+  currentProjectName: document.querySelector(".current-project-name"),
 };
 
 function getUISelectors() {
@@ -31,10 +32,10 @@ function getProjectName() {
   return UISelectors.projectNameInput.value;
 }
 
-function renderSidebar(data) {
+function renderSidebar(projects) {
   UISelectors.projectsListEl.textContent = "";
 
-  data.forEach((project, index) => {
+  projects.forEach((project, index) => {
     const name = project.name;
 
     const projectEl = document.createElement("li");
@@ -60,6 +61,10 @@ function renderSidebar(data) {
   clearProjectInput();
 }
 
+function renderMainContent(data) {
+  UISelectors.currentProjectName.textContent = data.currentProject.name;
+}
+
 function clearProjectInput() {
   setTimeout(() => {
     UISelectors.projectNameInput.value = "";
@@ -78,4 +83,5 @@ export default {
   getProjectName,
   renderSidebar,
   getProjectIndex,
+  renderMainContent,
 };
