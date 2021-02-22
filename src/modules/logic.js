@@ -14,7 +14,6 @@ const data = { projects: [], currentProject: null };
 function createNewProject(name) {
   const newProject = new Project(name);
   newProject.addProject();
-  console.log(data);
 
   return newProject;
 }

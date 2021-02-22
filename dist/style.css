@@ -317,10 +317,43 @@ main {
   border-bottom: solid 2px white;
 }
 
+/* TODOS CONTAINER */
+
 .todos-container {
   height: 100%;
+  width: 95%;
   display: grid;
+  align-self: center;
   grid-template-columns: 1fr;
   grid-auto-rows: 40px;
 }
 
+.todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: grey 1px solid;
+}
+
+.todo-name-checkbox {
+  display: flex;
+}
+
+.todo-name-checkbox > .todo-name {
+  padding: 0 0.3rem 0 0.3rem;
+}
+
+.todo-date-btns {
+  display: flex;
+}
+
+.todo-date-btns > .todo-date {
+  color: red;
+  padding: 0 0.3rem 0 0.3rem;
+}
+
+.todo-date-btns > i {
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0 0.3rem 0 0.3rem;
+}
