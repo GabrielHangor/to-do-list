@@ -387,7 +387,7 @@ main {
 .form-container-todo {
   width: 500px;
   max-width: 90%;
-  height: 500px;
+  height: 600px;
   background: whitesmoke;
   display: flex;
   flex-direction: column;

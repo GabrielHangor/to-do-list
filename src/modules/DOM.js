@@ -40,7 +40,6 @@ function toggleProjectModal() {
 function toggleTodoModal() {
   UISelectors.todoModalEl.classList.toggle("form-container-todo-hidden");
   UISelectors.container.classList.toggle("container-opaque");
-  clearProjectInput();
 }
 
 function getProjectName() {
@@ -88,6 +87,8 @@ function renderSidebar(projects) {
 function renderMainContent(data) {
   UISelectors.currentProjectName.textContent = data.currentProject.name;
 }
+
+
 
 function clearProjectInput() {
   setTimeout(() => {

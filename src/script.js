@@ -32,12 +32,15 @@ function projectAddSubmit(e) {
 
 function todoAddSubmit(e) {
   const todoInput = DOMCtrl.getTodoInput();
-  console.log(todoInput);
+  const currentProjectIndex = Logic.getCurrentProjectIndex();
+  Logic.createNewTodo(todoInput, currentProjectIndex);
 
 
   DOMCtrl.toggleTodoModal();
   e.preventDefault();
 }
+
+// возможность создания новых тасков будет только внутри страниц проектов, не на главной/отсортированной
 
 function deleteProject(e) {
   if (e.target.id === "delete-project-btn") {
