@@ -4,12 +4,21 @@ const UISelectors = {
   mainContent: document.querySelector(".main-content"),
   menuBars: document.querySelector(".menu-bars"),
   projectModalEl: document.querySelector(".form-container-project"),
+  todoModalEl: document.querySelector(".form-container-todo"),
   addProjectBtn: document.querySelector(".add-project-btn"),
   projectCancelBtn: document.querySelector(".project-cancel-btn"),
   projectNameInput: document.querySelector(".project-name-input"),
   projectSubmitBtn: document.querySelector(".project-submit-btn"),
   projectsListEl: document.querySelector(".projects"),
   currentProjectName: document.querySelector(".current-project-name"),
+  todoAddBtn: document.querySelector(".add-todo"),
+  todoCancelBtn: document.querySelector(".todo-cancel-btn"),
+  todoSubmitBtn: document.querySelector(".todo-submit-btn"),
+  todoModalEl: document.querySelector(".form-container-todo"),
+  todoNameInput: document.querySelector(".todo-name-input"),
+  todoDescriptionInput: document.querySelector(".task-description-input"),
+  todoDateInput: document.querySelector(".task-duedate-input"),
+  todoPriorityInput: document.querySelector("#priority"),
 };
 
 function getUISelectors() {
@@ -28,8 +37,23 @@ function toggleProjectModal() {
   clearProjectInput();
 }
 
+function toggleTodoModal() {
+  UISelectors.todoModalEl.classList.toggle("form-container-todo-hidden");
+  UISelectors.container.classList.toggle("container-opaque");
+  clearProjectInput();
+}
+
 function getProjectName() {
   return UISelectors.projectNameInput.value;
+}
+
+function getTodoInput() {
+  return {
+    todoName: UISelectors.todoNameInput.value,
+    todoDescription: UISelectors.todoDescriptionInput.value,
+    todoDate: UISelectors.todoDateInput.value,
+    todoPriority: UISelectors.todoPriorityInput.value,
+  };
 }
 
 function renderSidebar(projects) {
@@ -84,4 +108,6 @@ export default {
   renderSidebar,
   getProjectIndex,
   renderMainContent,
+  toggleTodoModal,
+  getTodoInput,
 };

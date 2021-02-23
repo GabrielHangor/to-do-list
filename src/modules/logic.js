@@ -9,6 +9,15 @@ class Project {
   }
 }
 
+class Todo {
+  constructor(name, description, date, priority) {
+    this.name = name;
+    this.description = description;
+    this.date = date;
+    this.priority = priority;
+  }
+}
+
 const data = { projects: [], currentProject: null };
 
 function createNewProject(name) {
@@ -17,6 +26,8 @@ function createNewProject(name) {
 
   return newProject;
 }
+
+function createNewTodo() {}
 
 function deleteProjectFromDataArray(index) {
   data.projects.splice(index, 1);
@@ -31,4 +42,5 @@ export default {
   createNewProject,
   deleteProjectFromDataArray,
   setCurrentProject,
+  createNewTodo,
 };

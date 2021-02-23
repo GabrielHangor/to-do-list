@@ -13,6 +13,9 @@ function loadEventListeners() {
     "click",
     DOMCtrl.toggleProjectModal
   );
+  UISelectors.todoAddBtn.addEventListener("click", DOMCtrl.toggleTodoModal);
+  UISelectors.todoCancelBtn.addEventListener("click", DOMCtrl.toggleTodoModal);
+  UISelectors.todoModalEl.addEventListener("submit", todoAddSubmit);
   UISelectors.projectModalEl.addEventListener("submit", projectAddSubmit);
   UISelectors.projectsListEl.addEventListener("click", deleteProject);
   UISelectors.projectsListEl.addEventListener("click", displayCurrentProject);
@@ -24,6 +27,15 @@ function projectAddSubmit(e) {
   DOMCtrl.renderSidebar(Logic.data.projects);
   DOMCtrl.toggleProjectModal();
 
+  e.preventDefault();
+}
+
+function todoAddSubmit(e) {
+  const todoInput = DOMCtrl.getTodoInput();
+  console.log(todoInput);
+
+
+  DOMCtrl.toggleTodoModal();
   e.preventDefault();
 }
 
