@@ -41,6 +41,7 @@ function toggleProjectModal() {
 function toggleTodoModal() {
   UISelectors.todoModalEl.classList.toggle("form-container-todo-hidden");
   UISelectors.container.classList.toggle("container-opaque");
+  clearTodoInput();
 }
 
 function getProjectName() {
@@ -90,6 +91,8 @@ function renderCurrentProjectName(data) {
 }
 
 function renderCurrentProjectTodos(todos) {
+  clearTodoList();
+
   todos.forEach((todo, index) => {
     const {
       name,
@@ -135,6 +138,15 @@ function renderCurrentProjectTodos(todos) {
     todoEl.append(todoNameCheckBox, todoDateBtns);
     UISelectors.todosContainer.insertBefore(todoEl, UISelectors.todoAddBtn);
   });
+}
+
+function clearTodoList() {
+  const todos = document.querySelectorAll(".todo");
+  todos.forEach((todo) => todo.remove());
+}
+
+function clearTodoInput() {
+  UISelectors.todoModalEl.reset();
 }
 
 function clearProjectInput() {

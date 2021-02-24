@@ -55,6 +55,8 @@ function displayCurrentProject(e) {
     const index = DOMCtrl.getProjectIndex(e);
     Logic.setCurrentProject(index);
     DOMCtrl.renderCurrentProjectName(Logic.data);
+    const currentProjectIndex = Logic.getCurrentProjectIndex();
+    DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
     console.log(Logic.data);
   }
 }
