@@ -34,7 +34,7 @@ function todoAddSubmit(e) {
   const todoInput = DOMCtrl.getTodoInput();
   const currentProjectIndex = Logic.getCurrentProjectIndex();
   Logic.createNewTodo(todoInput, currentProjectIndex);
-
+  DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
 
   DOMCtrl.toggleTodoModal();
   e.preventDefault();
@@ -54,7 +54,7 @@ function displayCurrentProject(e) {
   if (e.target.className === "project-name") {
     const index = DOMCtrl.getProjectIndex(e);
     Logic.setCurrentProject(index);
-    DOMCtrl.renderMainContent(Logic.data);
+    DOMCtrl.renderCurrentProjectName(Logic.data);
     console.log(Logic.data);
   }
 }

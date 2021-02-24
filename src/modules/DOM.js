@@ -19,6 +19,7 @@ const UISelectors = {
   todoDescriptionInput: document.querySelector(".task-description-input"),
   todoDateInput: document.querySelector(".task-duedate-input"),
   todoPriorityInput: document.querySelector("#priority"),
+  todosContainer: document.querySelector(".todos-container"),
 };
 
 function getUISelectors() {
@@ -84,11 +85,57 @@ function renderSidebar(projects) {
   clearProjectInput();
 }
 
-function renderMainContent(data) {
+function renderCurrentProjectName(data) {
   UISelectors.currentProjectName.textContent = data.currentProject.name;
 }
 
+function renderCurrentProjectTodos(todos) {
+  todos.forEach((todo, index) => {
+    const {
+      name,
+      description,
+      date,
+      priority,
+      projectName,
+      isCompleted,
+    } = todo;
 
+    const todoEl = document.createElement("div");
+    todoEl.className = "todo";
+    todoEl.setAttribute("data-index", index);
+
+    const todoNameCheckBox = document.createElement("div");
+    todoNameCheckBox.className = "todo-name-checkbox";
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.name = "isCompleted";
+    checkbox.id = "completed";
+    isCompleted ? checkbox.checked : null;
+
+    const todoName = document.createElement("div");
+    todoName.className = "todo-name";
+    todoName.textContent = `${name}`;
+
+    const todoDateBtns = document.createElement("div");
+    todoDateBtns.className = "todo-date-btns";
+
+    const todoDate = document.createElement("div");
+    todoDate.className = "todo-date";
+    todoDate.textContent = `${date}`;
+
+    const editBtn = document.createElement("i");
+    editBtn.className = "far fa-edit";
+
+    const deleteBtn = document.createElement("i");
+    deleteBtn.className = "fas fa-times";
+
+    todoNameCheckBox.append(checkbox, todoName);
+    todoDateBtns.append(todoDate, editBtn, deleteBtn);
+    todoEl.append(todoNameCheckBox, todoDateBtns);
+    UISelectors.todosContainer.insertBefore(todoEl, UISelectors.todoAddBtn);
+  });
+}
 
 function clearProjectInput() {
   setTimeout(() => {
@@ -108,7 +155,8 @@ export default {
   getProjectName,
   renderSidebar,
   getProjectIndex,
-  renderMainContent,
+  renderCurrentProjectName,
   toggleTodoModal,
   getTodoInput,
+  renderCurrentProjectTodos,
 };

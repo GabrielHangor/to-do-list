@@ -16,6 +16,7 @@ class Todo {
     this.date = date;
     this.priority = priority;
     this.projectName = projectName;
+    this.isCompleted = false;
   }
 }
 
@@ -24,8 +25,6 @@ const data = { projects: [], currentProject: null };
 function createNewProject(name) {
   const newProject = new Project(name);
   newProject.addProject();
-
-  return newProject;
 }
 
 function createNewTodo(todoInput, currentProjectIndex) {
@@ -39,6 +38,7 @@ function createNewTodo(todoInput, currentProjectIndex) {
     todoPriority,
     projectName
   );
+
 
   data.projects[currentProjectIndex].todos.push(newTodo);
 }
