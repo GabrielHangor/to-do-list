@@ -28,16 +28,16 @@
     <h1>New Task</h1>
     <div class="form-group-todos">
       <label for="todo-name">Task Name</label>
-      <input autofocus class="todo-name-input" type="text" id="todo-name" placeholder="Enter Task Name" required minlength="3" maxlength="15">
+      <input autofocus class="todo-name-input" type="text" id="todo-name" placeholder="Enter Task Name" required minlength="3" maxlength="25">
       <label for="todo-description">Task Description</label>
       <input class="task-description-input" type="text" id="todo-description" placeholder="Enter Task Description" required minlength="3" maxlength="40">
       <label for="todo-date">Task Due Date</label>
       <input class="task-duedate-input" type="date" id="todo-date" placeholder="Enter Task Due Date" required>
       <label for="priority">Task Priority</label>
       <select required name="Task Priority" id="priority">
-        <option value="first">First</option>
-        <option value="second">Second</option>
-        <option value="third">Third</option>
+        <option value="First">First</option>
+        <option value="Second">Second</option>
+        <option value="Third">Third</option>
       </select>
     </div>
     <div class="project-buttons">
@@ -90,7 +90,8 @@
           </div>
           <!-- TODOS container -->
           <div class="todos-container">
-            <div class="todo">
+
+            <!-- <div class="todo">
               <div class="todo-name-checkbox">
                 <input type="checkbox" name="isCompleted" id="completed">
                 <div class="todo-name">Clean the house</div>
@@ -100,7 +101,8 @@
                 <i class="far fa-edit"></i>
                 <i class="fas fa-times"></i>
               </div>
-            </div>
+            </div> -->
+
             <div class="add-todo">
               <i class="fas fa-plus-circle"></i>
               <p>New Task</p>
