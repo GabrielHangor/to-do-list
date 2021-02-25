@@ -160,6 +160,11 @@ function getProjectIndex(event) {
   return projectIndex;
 }
 
+function getTodoIndex(event) {
+  const todoIndex = event.target.closest(".todo").getAttribute("data-index");
+  return todoIndex;
+}
+
 export default {
   getUISelectors,
   toggleSidebar,
@@ -171,4 +176,5 @@ export default {
   toggleTodoModal,
   getTodoInput,
   renderCurrentProjectTodos,
+  getTodoIndex
 };

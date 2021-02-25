@@ -1,3 +1,4 @@
+import DOM from "./modules/DOM.js";
 import DOMCtrl from "./modules/DOM.js";
 import Logic from "./modules/logic.js";
 
@@ -19,6 +20,7 @@ function loadEventListeners() {
   UISelectors.projectModalEl.addEventListener("submit", projectAddSubmit);
   UISelectors.projectsListEl.addEventListener("click", deleteProject);
   UISelectors.projectsListEl.addEventListener("click", displayCurrentProject);
+  UISelectors.todosContainer.addEventListener("click", deleteTodo);
 }
 
 function projectAddSubmit(e) {
@@ -34,7 +36,9 @@ function todoAddSubmit(e) {
   const todoInput = DOMCtrl.getTodoInput();
   const currentProjectIndex = Logic.getCurrentProjectIndex();
   Logic.createNewTodo(todoInput, currentProjectIndex);
-  DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
+  DOMCtrl.renderCurrentProjectTodos(
+    Logic.data.projects[currentProjectIndex].todos
+  );
 
   DOMCtrl.toggleTodoModal();
   e.preventDefault();
@@ -47,6 +51,15 @@ function deleteProject(e) {
     const index = DOMCtrl.getProjectIndex(e);
     Logic.deleteProjectFromDataArray(index);
     DOMCtrl.renderSidebar(Logic.data.projects);
+  }
+}
+
+function deleteTodo(e) {
+  if (e.target.className === "fas fa-times") {
+    const index = DOMCtrl.getTodoIndex(e);
+    const currentProjectIndex = Logic.getCurrentProjectIndex();
+    Logic.deleteTodoFromData(index, currentProjectIndex);
+    DOM.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
   }
 }
 

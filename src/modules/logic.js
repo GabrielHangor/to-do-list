@@ -39,12 +39,15 @@ function createNewTodo(todoInput, currentProjectIndex) {
     projectName
   );
 
-
   data.projects[currentProjectIndex].todos.push(newTodo);
 }
 
 function deleteProjectFromDataArray(index) {
   data.projects.splice(index, 1);
+}
+
+function deleteTodoFromData(index, projectIndex) {
+  data.projects[projectIndex].todos.splice(index, 1);
 }
 
 function setCurrentProject(index) {
@@ -70,4 +73,5 @@ export default {
   setCurrentProject,
   createNewTodo,
   getCurrentProjectIndex,
+  deleteTodoFromData,
 };
