@@ -15,7 +15,10 @@ function loadEventListeners() {
   );
   UISelectors.todoAddBtn.addEventListener("click", DOMCtrl.toggleTodoModal);
   UISelectors.todoCancelBtn.addEventListener("click", DOMCtrl.toggleTodoModal);
-  UISelectors.todoEditCancelBtn.addEventListener('click', DOMCtrl.toggleTodoEditModal)
+  UISelectors.todoEditCancelBtn.addEventListener(
+    "click",
+    DOMCtrl.toggleTodoEditModal
+  );
   UISelectors.todoModalEl.addEventListener("submit", todoAddSubmit);
   UISelectors.projectModalEl.addEventListener("submit", projectAddSubmit);
   UISelectors.projectsListEl.addEventListener("click", deleteProject);
@@ -53,6 +56,10 @@ function todoEditSubmit() {}
 function togglePopulateTodoEditModal(e) {
   if (e.target.className === "far fa-edit") {
     DOMCtrl.toggleTodoEditModal();
+    const currentProjectIndex = Logic.getCurrentProjectIndex();
+    const index = DOMCtrl.getTodoIndex(e);
+    const todoObj = Logic.data.projects[currentProjectIndex].todos[index];
+    DOMCtrl.populateTodoEditModal(todoObj);
   }
 }
 

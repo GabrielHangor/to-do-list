@@ -21,7 +21,14 @@ const UISelectors = {
   todoPriorityInput: document.querySelector("#priority"),
   todosContainer: document.querySelector(".todos-container"),
   todoEditModalEl: document.querySelector(".form-container-todo-edit"),
-  todoEditCancelBtn: document.querySelector('.todo-cancel-btn-edit')
+  todoEditCancelBtn: document.querySelector(".todo-cancel-btn-edit"),
+  todoNameEditInput: document.querySelector(".todo-name-input-edit"),
+  todoDescriptionEditInput: document.querySelector(
+    ".task-description-input-edit"
+  ),
+  todoDateEditInput: document.querySelector(".task-duedate-input-edit"),
+  todoPriorityEditInput: document.querySelector("#priority-edit"),
+  currentTodoName: document.querySelector(".current-todo-name"),
 };
 
 function getUISelectors() {
@@ -47,7 +54,9 @@ function toggleTodoModal() {
 }
 
 function toggleTodoEditModal() {
-  UISelectors.todoEditModalEl.classList.toggle('form-container-todo-edit-hidden');
+  UISelectors.todoEditModalEl.classList.toggle(
+    "form-container-todo-edit-hidden"
+  );
   UISelectors.container.classList.toggle("container-opaque");
 }
 
@@ -147,6 +156,15 @@ function renderCurrentProjectTodos(todos) {
   });
 }
 
+function populateTodoEditModal(todoObj) {
+  const { name, description, date, priority } = todoObj;
+  UISelectors.currentTodoName.textContent = `${name}`;
+  UISelectors.todoNameEditInput.value = name;
+  UISelectors.todoDescriptionEditInput.value = description;
+  UISelectors.todoDateEditInput.value = date;
+  UISelectors.todoPriorityEditInput.value = priority;
+}
+
 function clearTodoList() {
   const todos = document.querySelectorAll(".todo");
   todos.forEach((todo) => todo.remove());
@@ -185,4 +203,5 @@ export default {
   renderCurrentProjectTodos,
   getTodoIndex,
   toggleTodoEditModal,
+  populateTodoEditModal,
 };
