@@ -404,7 +404,8 @@ main {
   transition: all 0.3s ease-in-out;
 }
 
-.form-container-todo-hidden {
+.form-container-todo-hidden,
+.form-container-todo-edit-hidden {
   pointer-events: none;
   opacity: 0;
 }
