@@ -73,6 +73,15 @@ function getTodoInput() {
   };
 }
 
+function getEditTodoInput() {
+  return {
+    todoName: UISelectors.todoNameEditInput.value,
+    todoDescription: UISelectors.todoDescriptionEditInput.value,
+    todoDate: UISelectors.todoDateEditInput.value,
+    todoPriority: UISelectors.todoPriorityEditInput.value,
+  };
+}
+
 function renderSidebar(projects) {
   UISelectors.projectsListEl.textContent = "";
 
@@ -204,4 +213,5 @@ export default {
   getTodoIndex,
   toggleTodoEditModal,
   populateTodoEditModal,
+  getEditTodoInput,
 };

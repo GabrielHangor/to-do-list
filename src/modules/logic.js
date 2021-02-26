@@ -20,7 +20,7 @@ class Todo {
   }
 }
 
-const data = { projects: [], currentProject: null };
+const data = { projects: [], currentProject: null, currentTodo: null };
 
 function createNewProject(name) {
   const newProject = new Project(name);
@@ -54,6 +54,10 @@ function setCurrentProject(index) {
   data.currentProject = data.projects[index];
 }
 
+function setCurrentTodo(projectIndex, index) {
+  data.currentTodo = data.projects[projectIndex].todos[index];
+}
+
 function getCurrentProjectIndex() {
   let currentProjectIndex = null;
 
@@ -66,6 +70,26 @@ function getCurrentProjectIndex() {
   return currentProjectIndex;
 }
 
+function getCurrentTodoIndex(projectIndex) {
+  let currentTodoIndex = null;
+
+  data.projects[projectIndex].todos.forEach((todo, index) => {
+    if (todo.name === data.currentTodo.name) {
+      currentTodoIndex = index;
+    }
+  });
+
+  return currentTodoIndex;
+}
+
+function setNewTodoProperties(todoInput, projectIndex, index) {
+  const { todoName, todoDescription, todoDate, todoPriority } = todoInput;
+  data.projects[projectIndex].todos[index].name = todoName;
+  data.projects[projectIndex].todos[index].description = todoDescription;
+  data.projects[projectIndex].todos[index].date = todoDate;
+  data.projects[projectIndex].todos[index].priority = todoPriority;
+}
+
 export default {
   data,
   createNewProject,
@@ -74,4 +98,7 @@ export default {
   createNewTodo,
   getCurrentProjectIndex,
   deleteTodoFromData,
+  setNewTodoProperties,
+  setCurrentTodo,
+  getCurrentTodoIndex,
 };

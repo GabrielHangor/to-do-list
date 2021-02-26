@@ -28,6 +28,7 @@ function loadEventListeners() {
     "click",
     togglePopulateTodoEditModal
   );
+  UISelectors.todoEditModalEl.addEventListener("submit", todoEditSubmit);
 }
 
 function projectAddSubmit(e) {
@@ -51,7 +52,16 @@ function todoAddSubmit(e) {
   e.preventDefault();
 }
 
-function todoEditSubmit() {}
+function todoEditSubmit(e) {
+  const todoInput = DOMCtrl.getEditTodoInput();
+  const currentProjectIndex = Logic.getCurrentProjectIndex();
+  const index = Logic.getCurrentTodoIndex(currentProjectIndex);
+  Logic.setNewTodoProperties(todoInput, currentProjectIndex, index);
+  DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
+
+  DOMCtrl.toggleTodoEditModal();
+  e.preventDefault();
+}
 
 function togglePopulateTodoEditModal(e) {
   if (e.target.className === "far fa-edit") {
@@ -59,6 +69,7 @@ function togglePopulateTodoEditModal(e) {
     const currentProjectIndex = Logic.getCurrentProjectIndex();
     const index = DOMCtrl.getTodoIndex(e);
     const todoObj = Logic.data.projects[currentProjectIndex].todos[index];
+    Logic.setCurrentTodo(currentProjectIndex, index);
     DOMCtrl.populateTodoEditModal(todoObj);
   }
 }
