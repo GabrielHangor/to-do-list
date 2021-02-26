@@ -384,7 +384,8 @@ main {
 
 /* TODO input modal */
 
-.form-container-todo {
+.form-container-todo,
+.form-container-todo-edit {
   width: 500px;
   max-width: 90%;
   height: 600px;
@@ -408,34 +409,40 @@ main {
   opacity: 0;
 }
 
-.form-group-todos {
+.form-group-todos,
+.form-group-todos-edit {
   width: 90%;
   height: auto;
   display: flex;
   flex-direction: column;
 }
 
-.form-group-todos > input {
+.form-group-todos > input,
+.form-group-todos-edit > input {
   height: 30px;
   border-radius: 5px;
   border: solid 1px rgb(199, 199, 199);
 }
 
-.form-group-todos > label {
+.form-group-todos > label,
+.form-group-todos-edit > label {
   padding-top: 1rem;
 }
 
-.task-duedate-input {
+.task-duedate-input,
+.task-duedate-input-edit {
   padding: 1px 0 1px 0;
 }
 
-#priority {
+#priority,
+#priority-edit {
   height: 34px;
   border-radius: 5px;
   border: solid 1px rgb(199, 199, 199);
 }
 
-.todo-cancel-btn {
+.todo-cancel-btn,
+.todo-cancel-btn-edit {
   border-radius: 5px;
   font-size: 1.2rem;
   padding: 0;
@@ -444,7 +451,8 @@ main {
   background-color: rgb(255, 212, 212);
 }
 
-.todo-submit-btn {
+.todo-submit-btn,
+.todo-submit-btn-edit {
   border-radius: 5px;
   font-size: 1.2rem;
   padding: 0;
