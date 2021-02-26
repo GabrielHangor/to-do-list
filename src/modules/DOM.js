@@ -20,6 +20,8 @@ const UISelectors = {
   todoDateInput: document.querySelector(".task-duedate-input"),
   todoPriorityInput: document.querySelector("#priority"),
   todosContainer: document.querySelector(".todos-container"),
+  todoEditModalEl: document.querySelector(".form-container-todo-edit"),
+  todoEditCancelBtn: document.querySelector('.todo-cancel-btn-edit')
 };
 
 function getUISelectors() {
@@ -42,6 +44,11 @@ function toggleTodoModal() {
   UISelectors.todoModalEl.classList.toggle("form-container-todo-hidden");
   UISelectors.container.classList.toggle("container-opaque");
   clearTodoInput();
+}
+
+function toggleTodoEditModal() {
+  UISelectors.todoEditModalEl.classList.toggle('form-container-todo-edit-hidden');
+  UISelectors.container.classList.toggle("container-opaque");
 }
 
 function getProjectName() {
@@ -176,5 +183,6 @@ export default {
   toggleTodoModal,
   getTodoInput,
   renderCurrentProjectTodos,
-  getTodoIndex
+  getTodoIndex,
+  toggleTodoEditModal,
 };

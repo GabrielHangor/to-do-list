@@ -15,11 +15,16 @@ function loadEventListeners() {
   );
   UISelectors.todoAddBtn.addEventListener("click", DOMCtrl.toggleTodoModal);
   UISelectors.todoCancelBtn.addEventListener("click", DOMCtrl.toggleTodoModal);
+  UISelectors.todoEditCancelBtn.addEventListener('click', DOMCtrl.toggleTodoEditModal)
   UISelectors.todoModalEl.addEventListener("submit", todoAddSubmit);
   UISelectors.projectModalEl.addEventListener("submit", projectAddSubmit);
   UISelectors.projectsListEl.addEventListener("click", deleteProject);
   UISelectors.projectsListEl.addEventListener("click", displayCurrentProject);
   UISelectors.todosContainer.addEventListener("click", deleteTodo);
+  UISelectors.todosContainer.addEventListener(
+    "click",
+    togglePopulateTodoEditModal
+  );
 }
 
 function projectAddSubmit(e) {
@@ -35,18 +40,20 @@ function todoAddSubmit(e) {
   const todoInput = DOMCtrl.getTodoInput();
   const currentProjectIndex = Logic.getCurrentProjectIndex();
   Logic.createNewTodo(todoInput, currentProjectIndex);
-  DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
+  DOMCtrl.renderCurrentProjectTodos(
+    Logic.data.projects[currentProjectIndex].todos
+  );
 
   DOMCtrl.toggleTodoModal();
   e.preventDefault();
 }
 
-function todoEditSubmit() {
+function todoEditSubmit() {}
 
-}
-
-function toggleTodoEditModal() {
-
+function togglePopulateTodoEditModal(e) {
+  if (e.target.className === "far fa-edit") {
+    DOMCtrl.toggleTodoEditModal();
+  }
 }
 
 // возможность создания новых тасков будет только внутри страниц проектов, не на главной/отсортированной
@@ -65,7 +72,9 @@ function deleteTodo(e) {
     const index = DOMCtrl.getTodoIndex(e);
     const currentProjectIndex = Logic.getCurrentProjectIndex();
     Logic.deleteTodoFromData(index, currentProjectIndex);
-    DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
+    DOMCtrl.renderCurrentProjectTodos(
+      Logic.data.projects[currentProjectIndex].todos
+    );
   }
 }
 
@@ -75,7 +84,9 @@ function displayCurrentProject(e) {
     Logic.setCurrentProject(index);
     DOMCtrl.renderCurrentProjectName(Logic.data);
     const currentProjectIndex = Logic.getCurrentProjectIndex();
-    DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
+    DOMCtrl.renderCurrentProjectTodos(
+      Logic.data.projects[currentProjectIndex].todos
+    );
     console.log(Logic.data);
   }
 }
