@@ -45,6 +45,28 @@
       <button type="submit" class="todo-submit-btn">Add Task</button>
     </div>
   </form>
+  <!-- TODO Edit Modal -->
+  <form class="form-container-todo-edit form-container-todo-edit-hidden">
+    <h1>New Task</h1>
+    <div class="form-group-todos-edit">
+      <label for="todo-name-edit">New Task Name</label>
+      <input autofocus class="todo-name-input-edit" type="text" id="todo-name-edit" placeholder="Enter New Task Name" required minlength="3" maxlength="25">
+      <label for="todo-description-edit">New Task Description</label>
+      <input class="task-description-input-edit" type="text" id="todo-description-edit" placeholder="Enter New Task Description" required minlength="3" maxlength="40">
+      <label for="todo-date-edit">Task Due Date</label>
+      <input class="task-duedate-input-edit" type="date" id="todo-date-edit" placeholder="Enter Task Due Date" required>
+      <label for="priority-edit">Task Priority</label>
+      <select required name="Task Priority" id="priority-edit">
+        <option value="First">First</option>
+        <option value="Second">Second</option>
+        <option value="Third">Third</option>
+      </select>
+    </div>
+    <div class="project-buttons">
+      <button type="button" class="todo-cancel-btn-edit">Cancel</button>
+      <button type="submit" class="todo-submit-btn-edit">Edit Task</button>
+    </div>
+  </form>
   <!-- NAVBAR -->
   <div class="container">
     <nav>
