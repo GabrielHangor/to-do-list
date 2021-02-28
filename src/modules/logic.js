@@ -26,10 +26,15 @@ function getStorageData() {
   localStorage.getItem("projects")
     ? (data.projects = JSON.parse(localStorage.getItem("projects")))
     : localStorage.setItem("projects", JSON.stringify(data.projects));
+
+  localStorage.getItem("currentProject")
+    ? (data.currentProject = JSON.parse(localStorage.getItem("currentProject")))
+    : localStorage.setItem("currentProject",JSON.stringify(data.currentProject));
 }
 
 function updateLocalStorage() {
   localStorage.setItem("projects", JSON.stringify(data.projects));
+  localStorage.setItem("currentProject", JSON.stringify(data.currentProject));
 }
 
 function createNewProject(name) {

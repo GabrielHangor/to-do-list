@@ -123,18 +123,21 @@ function displayCurrentProject(e) {
     Logic.setCurrentProject(index);
     DOMCtrl.renderCurrentProjectName(Logic.data);
     const currentProjectIndex = Logic.getCurrentProjectIndex();
-    DOMCtrl.renderCurrentProjectTodos(
-      Logic.data.projects[currentProjectIndex].todos
-    );
+    DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
     Logic.updateLocalStorage();
     console.log(Logic.data);
   }
 }
 
+// сделать отдельный метод, который отображает сохраненный проект при перезагрузке страницы
+
 function init() {
   loadEventListeners();
   Logic.getStorageData();
   DOMCtrl.renderSidebar(Logic.data.projects);
+  DOMCtrl.renderCurrentProjectName(Logic.data);
+  const currentProjectIndex = Logic.getCurrentProjectIndex();
+  DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
 }
 
 init();
