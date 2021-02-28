@@ -337,8 +337,21 @@ main {
   border-bottom: grey 1px solid;
 }
 
+.todo-opaque {
+  opacity: 0.1;
+}
+
+.todo-date-btns-disabled {
+  pointer-events: none;
+}
+
 .todo-name-checkbox {
   display: flex;
+}
+
+.todo-name-checkbox > input {
+  transform: scale(1.5);
+  cursor: pointer;
 }
 
 .todo-name-checkbox > .todo-name {

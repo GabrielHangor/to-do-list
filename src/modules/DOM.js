@@ -143,7 +143,6 @@ function renderCurrentProjectTodos(todos) {
     checkbox.type = "checkbox";
     checkbox.name = "isCompleted";
     checkbox.id = "completed";
-    isCompleted ? checkbox.checked : null;
 
     const todoName = document.createElement("div");
     todoName.className = "todo-name";
@@ -161,6 +160,12 @@ function renderCurrentProjectTodos(todos) {
 
     const deleteBtn = document.createElement("i");
     deleteBtn.className = "fas fa-times";
+
+    if (isCompleted) {
+      checkbox.setAttribute("checked", "checked");
+      todoEl.classList.toggle("todo-opaque");
+      todoDateBtns.classList.toggle("todo-date-btns-disabled");
+    }
 
     todoNameCheckBox.append(checkbox, todoName);
     todoDateBtns.append(todoDate, editBtn, deleteBtn);

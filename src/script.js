@@ -29,6 +29,7 @@ function loadEventListeners() {
     togglePopulateTodoEditModal
   );
   UISelectors.todoEditModalEl.addEventListener("submit", todoEditSubmit);
+  UISelectors.todosContainer.addEventListener("change", todoToggleCompleted);
 }
 
 function projectAddSubmit(e) {
@@ -77,8 +78,17 @@ function togglePopulateTodoEditModal(e) {
   }
 }
 
+function todoToggleCompleted(e) {
+  if (e.target.id === "completed") {
+    const currentProjectIndex = Logic.getCurrentProjectIndex();
+    const index = DOMCtrl.getTodoIndex(e);
+    Logic.todoToggleData(currentProjectIndex, index);
+    DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
+  }
+}
+
 // возможность создания новых тасков будет только внутри страниц проектов, не на главной/отсортированной
-// отображение кол-ва тасков в проекте на сайдбаре
+// 1 при клике на чекбокс менять свойство isCompleted на true
 
 function deleteProject(e) {
   if (e.target.id === "delete-project-btn") {

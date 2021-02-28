@@ -82,6 +82,11 @@ function getCurrentTodoIndex(projectIndex) {
   return currentTodoIndex;
 }
 
+function todoToggleData(projectIndex, index) {
+  data.projects[projectIndex].todos[index].isCompleted = 
+  !data.projects[projectIndex].todos[index].isCompleted;
+}
+
 function setNewTodoProperties(todoInput, projectIndex, index) {
   const { todoName, todoDescription, todoDate, todoPriority } = todoInput;
   data.projects[projectIndex].todos[index].name = todoName;
@@ -101,4 +106,5 @@ export default {
   setNewTodoProperties,
   setCurrentTodo,
   getCurrentTodoIndex,
+  todoToggleData,
 };
