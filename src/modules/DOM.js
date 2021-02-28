@@ -90,13 +90,17 @@ function renderSidebar(projects) {
 
     const projectEl = document.createElement("li");
     projectEl.className = "project";
+
     const todosNumberElSpan = document.createElement("span");
     todosNumberElSpan.className = "project-todos-number";
+
     const todosNumberElP = document.createElement("p");
-    todosNumberElP.textContent = "3";
+    todosNumberElP.textContent = `${project.todos.length}`;
+
     const projectName = document.createElement("p");
     projectName.className = "project-name";
     projectName.textContent = `${name}`;
+
     const projectDeleteBtn = document.createElement("i");
     projectDeleteBtn.id = "delete-project-btn";
     projectDeleteBtn.className = "fas fa-trash";

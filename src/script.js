@@ -47,6 +47,7 @@ function todoAddSubmit(e) {
   DOMCtrl.renderCurrentProjectTodos(
     Logic.data.projects[currentProjectIndex].todos
   );
+  DOMCtrl.renderSidebar(Logic.data.projects);
 
   DOMCtrl.toggleTodoModal();
   e.preventDefault();
@@ -57,7 +58,9 @@ function todoEditSubmit(e) {
   const currentProjectIndex = Logic.getCurrentProjectIndex();
   const index = Logic.getCurrentTodoIndex(currentProjectIndex);
   Logic.setNewTodoProperties(todoInput, currentProjectIndex, index);
-  DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
+  DOMCtrl.renderCurrentProjectTodos(
+    Logic.data.projects[currentProjectIndex].todos
+  );
 
   DOMCtrl.toggleTodoEditModal();
   e.preventDefault();
@@ -75,7 +78,7 @@ function togglePopulateTodoEditModal(e) {
 }
 
 // возможность создания новых тасков будет только внутри страниц проектов, не на главной/отсортированной
-// форма для редактирования таска
+// отображение кол-ва тасков в проекте на сайдбаре
 
 function deleteProject(e) {
   if (e.target.id === "delete-project-btn") {
@@ -93,6 +96,7 @@ function deleteTodo(e) {
     DOMCtrl.renderCurrentProjectTodos(
       Logic.data.projects[currentProjectIndex].todos
     );
+    DOMCtrl.renderSidebar(Logic.data.projects);
   }
 }
 
