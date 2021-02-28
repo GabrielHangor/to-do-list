@@ -37,6 +37,7 @@ function projectAddSubmit(e) {
   Logic.createNewProject(projectName);
   DOMCtrl.renderSidebar(Logic.data.projects);
   DOMCtrl.toggleProjectModal();
+  Logic.updateLocalStorage();
 
   e.preventDefault();
 }
@@ -49,6 +50,7 @@ function todoAddSubmit(e) {
     Logic.data.projects[currentProjectIndex].todos
   );
   DOMCtrl.renderSidebar(Logic.data.projects);
+  Logic.updateLocalStorage();
 
   DOMCtrl.toggleTodoModal();
   e.preventDefault();
@@ -62,6 +64,7 @@ function todoEditSubmit(e) {
   DOMCtrl.renderCurrentProjectTodos(
     Logic.data.projects[currentProjectIndex].todos
   );
+  Logic.updateLocalStorage();
 
   DOMCtrl.toggleTodoEditModal();
   e.preventDefault();
@@ -83,18 +86,21 @@ function todoToggleCompleted(e) {
     const currentProjectIndex = Logic.getCurrentProjectIndex();
     const index = DOMCtrl.getTodoIndex(e);
     Logic.todoToggleData(currentProjectIndex, index);
-    DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
+    DOMCtrl.renderCurrentProjectTodos(
+      Logic.data.projects[currentProjectIndex].todos
+    );
+    Logic.updateLocalStorage();
   }
 }
 
 // возможность создания новых тасков будет только внутри страниц проектов, не на главной/отсортированной
-// 1 при клике на чекбокс менять свойство isCompleted на true
 
 function deleteProject(e) {
   if (e.target.id === "delete-project-btn") {
     const index = DOMCtrl.getProjectIndex(e);
     Logic.deleteProjectFromDataArray(index);
     DOMCtrl.renderSidebar(Logic.data.projects);
+    Logic.updateLocalStorage();
   }
 }
 
@@ -107,6 +113,7 @@ function deleteTodo(e) {
       Logic.data.projects[currentProjectIndex].todos
     );
     DOMCtrl.renderSidebar(Logic.data.projects);
+    Logic.updateLocalStorage();
   }
 }
 
@@ -119,12 +126,15 @@ function displayCurrentProject(e) {
     DOMCtrl.renderCurrentProjectTodos(
       Logic.data.projects[currentProjectIndex].todos
     );
+    Logic.updateLocalStorage();
     console.log(Logic.data);
   }
 }
 
 function init() {
   loadEventListeners();
+  Logic.getStorageData();
+  DOMCtrl.renderSidebar(Logic.data.projects);
 }
 
 init();

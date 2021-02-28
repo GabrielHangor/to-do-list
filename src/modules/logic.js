@@ -20,7 +20,17 @@ class Todo {
   }
 }
 
-const data = { projects: [], currentProject: null, currentTodo: null };
+let data = { projects: [], currentProject: null, currentTodo: null };
+
+function getStorageData() {
+  localStorage.getItem("projects")
+    ? (data.projects = JSON.parse(localStorage.getItem("projects")))
+    : localStorage.setItem("projects", JSON.stringify(data.projects));
+}
+
+function updateLocalStorage() {
+  localStorage.setItem("projects", JSON.stringify(data.projects));
+}
 
 function createNewProject(name) {
   const newProject = new Project(name);
@@ -83,8 +93,9 @@ function getCurrentTodoIndex(projectIndex) {
 }
 
 function todoToggleData(projectIndex, index) {
-  data.projects[projectIndex].todos[index].isCompleted = 
-  !data.projects[projectIndex].todos[index].isCompleted;
+  data.projects[projectIndex].todos[index].isCompleted = !data.projects[
+    projectIndex
+  ].todos[index].isCompleted;
 }
 
 function setNewTodoProperties(todoInput, projectIndex, index) {
@@ -107,4 +118,6 @@ export default {
   setCurrentTodo,
   getCurrentTodoIndex,
   todoToggleData,
+  getStorageData,
+  updateLocalStorage,
 };
