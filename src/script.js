@@ -93,7 +93,7 @@ function todoToggleCompleted(e) {
   }
 }
 
-// возможность создания новых тасков будет только внутри страниц проектов, не на главной/отсортированной
+// возможность создания/редактирования  тасков будет только внутри страниц проектов, не на главной/отсортированной
 
 function deleteProject(e) {
   if (e.target.id === "delete-project-btn") {
@@ -123,21 +123,35 @@ function displayCurrentProject(e) {
     Logic.setCurrentProject(index);
     DOMCtrl.renderCurrentProjectName(Logic.data);
     const currentProjectIndex = Logic.getCurrentProjectIndex();
-    DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
+    DOMCtrl.renderCurrentProjectTodos(
+      Logic.data.projects[currentProjectIndex].todos
+    );
     Logic.updateLocalStorage();
     console.log(Logic.data);
   }
 }
 
-// сделать отдельный метод, который отображает сохраненный проект при перезагрузке страницы
+// сделать отдельный метод, который отображает сохраненный проект при перезагрузки страницы
 
 function init() {
   loadEventListeners();
   Logic.getStorageData();
+  console.log(Logic.data);
+  console.log(localStorage.getItem("data"));
+
+
+
+  
+
   DOMCtrl.renderSidebar(Logic.data.projects);
-  DOMCtrl.renderCurrentProjectName(Logic.data);
-  const currentProjectIndex = Logic.getCurrentProjectIndex();
-  DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
+  if (Logic.data.currentProject) {
+    DOMCtrl.renderCurrentProjectName(Logic.data);
+  }
+
+  if (Logic.data.currentProject) {
+    const currentProjectIndex = Logic.getCurrentProjectIndex();
+    DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
+  }
 }
 
 init();
