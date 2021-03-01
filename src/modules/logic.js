@@ -22,19 +22,12 @@ class Todo {
 
 let data = { projects: [], currentProject: null, currentTodo: null };
 
-// function getStorageData() {
-//   localStorage.getItem("data")
-//     ? Object.assign(data, JSON.parse(localStorage.getItem("data")))
-//     : localStorage.setItem("data", JSON.stringify(data));
-// }
-
 function getStorageData() {
-  if (localStorage.getItem("data")) {
-    data = JSON.parse(localStorage.getItem("data"));
-  } else {
-    localStorage.setItem("data", JSON.stringify(data));
-  }
+  localStorage.getItem("data")
+    ? Object.assign(data, JSON.parse(localStorage.getItem("data")))
+    : localStorage.setItem("data", JSON.stringify(data));
 }
+
 
 function updateLocalStorage() {
   localStorage.setItem("data", JSON.stringify(data));
