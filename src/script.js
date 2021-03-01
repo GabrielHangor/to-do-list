@@ -131,27 +131,20 @@ function displayCurrentProject(e) {
   }
 }
 
-// сделать отдельный метод, который отображает сохраненный проект при перезагрузки страницы
+function onLoadRender() {
+  DOMCtrl.renderSidebar(Logic.data.projects);
+
+  if (Logic.data.currentProject) {
+    DOMCtrl.renderCurrentProjectName(Logic.data);
+    const currentProjectIndex = Logic.getCurrentProjectIndex();
+    DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
+  }
+}
 
 function init() {
   loadEventListeners();
   Logic.getStorageData();
-  console.log(Logic.data);
-  console.log(localStorage.getItem("data"));
-
-
-
-  
-
-  DOMCtrl.renderSidebar(Logic.data.projects);
-  if (Logic.data.currentProject) {
-    DOMCtrl.renderCurrentProjectName(Logic.data);
-  }
-
-  if (Logic.data.currentProject) {
-    const currentProjectIndex = Logic.getCurrentProjectIndex();
-    DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
-  }
+  onLoadRender();
 }
 
 init();
