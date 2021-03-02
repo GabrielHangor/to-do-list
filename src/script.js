@@ -137,7 +137,9 @@ function onLoadRender() {
   if (Logic.data.currentProject) {
     DOMCtrl.renderCurrentProjectName(Logic.data);
     const currentProjectIndex = Logic.getCurrentProjectIndex();
-    DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
+    DOMCtrl.renderCurrentProjectTodos(
+      Logic.data.projects[currentProjectIndex].todos
+    );
   }
 }
 
@@ -145,6 +147,7 @@ function init() {
   loadEventListeners();
   Logic.getStorageData();
   onLoadRender();
+  DOMCtrl.restrictPreviousDate();
 }
 
 init();

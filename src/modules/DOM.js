@@ -31,6 +31,12 @@ const UISelectors = {
   currentTodoName: document.querySelector(".current-todo-name"),
 };
 
+function restrictPreviousDate() {
+  const today = new Date().toISOString().split("T")[0];
+  UISelectors.todoDateInput.setAttribute("min", today);
+  UISelectors.todoDateEditInput.setAttribute("min", today);
+}
+
 function getUISelectors() {
   return UISelectors;
 }
@@ -223,4 +229,5 @@ export default {
   toggleTodoEditModal,
   populateTodoEditModal,
   getEditTodoInput,
+  restrictPreviousDate,
 };
