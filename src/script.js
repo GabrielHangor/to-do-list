@@ -1,3 +1,4 @@
+import DOM from "./modules/DOM.js";
 import DOMCtrl from "./modules/DOM.js";
 import Logic from "./modules/logic.js";
 
@@ -30,6 +31,8 @@ function loadEventListeners() {
   );
   UISelectors.todoEditModalEl.addEventListener("submit", todoEditSubmit);
   UISelectors.todosContainer.addEventListener("change", todoToggleCompleted);
+  UISelectors.todosContainer.addEventListener("mouseover", displayTodoDetails);
+  UISelectors.todosContainer.addEventListener("mouseout", hideTodoDetails);
 }
 
 function projectAddSubmit(e) {
@@ -128,6 +131,22 @@ function displayCurrentProject(e) {
     );
     Logic.updateLocalStorage();
     console.log(Logic.data);
+  }
+}
+
+function displayTodoDetails(e) {
+  if (e.target.className === "todo-name") {
+    const currentProjectIndex = Logic.getCurrentProjectIndex();
+    const index = DOMCtrl.getTodoIndex(e);
+    const todo = Logic.data.projects[currentProjectIndex].todos[index];
+    DOMCtrl.populateTodoDetails(todo);
+    DOMCtrl.toggleTodoDetailsModal();
+  }
+}
+
+function hideTodoDetails(e) {
+  if (e.target.className === "todo-name") {
+    DOMCtrl.toggleTodoDetailsModal();
   }
 }
 

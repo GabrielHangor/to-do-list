@@ -29,6 +29,11 @@ const UISelectors = {
   todoDateEditInput: document.querySelector(".task-duedate-input-edit"),
   todoPriorityEditInput: document.querySelector("#priority-edit"),
   currentTodoName: document.querySelector(".current-todo-name"),
+  detailsContainer: document.querySelector(".details-container"),
+  detailsName: document.querySelector(".details-name"),
+  detailsProjectName: document.querySelector(".details-project-name"),
+  detailsDescription: document.querySelector(".details-description"),
+  detailsPriority: document.querySelector(".details-priority"),
 };
 
 function restrictPreviousDate() {
@@ -39,6 +44,18 @@ function restrictPreviousDate() {
 
 function getUISelectors() {
   return UISelectors;
+}
+
+function toggleTodoDetailsModal() {
+  UISelectors.detailsContainer.classList.toggle("details-container-hidden");
+}
+
+function populateTodoDetails(todo) {
+  const { name, description, priority, projectName } = todo;
+  UISelectors.detailsName.textContent = `${name}`;
+  UISelectors.detailsProjectName.textContent = `Project: ${projectName}`;
+  UISelectors.detailsDescription.textContent = `Description: ${description}`;
+  UISelectors.detailsPriority.textContent = `Priority: ${priority}`;
 }
 
 function toggleSidebar() {
@@ -230,4 +247,6 @@ export default {
   populateTodoEditModal,
   getEditTodoInput,
   restrictPreviousDate,
+  toggleTodoDetailsModal,
+  populateTodoDetails,
 };

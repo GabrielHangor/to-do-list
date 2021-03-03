@@ -358,6 +358,15 @@ main {
   padding: 0 0.3rem 0 0.3rem;
 }
 
+.todo-name {
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.todo-name:hover {
+  filter: brightness(10%);
+}
+
 .todo-date-btns {
   display: flex;
 }
@@ -482,6 +491,7 @@ main {
 
 /* TODO details modal */
 .details-container {
+  opacity: 0.9;
   width: 700px;
   max-width: 90%;
   height: 300px;
@@ -528,6 +538,9 @@ main {
   height: 30%;
   display: flex;
   overflow-wrap: anywhere;
+}
 
-  
+.details-container-hidden {
+  pointer-events: none;
+  opacity: 0;
 }
