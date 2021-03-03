@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
   <title>Document</title>
 </head>
@@ -16,7 +16,7 @@
     <h1>New Project</h1>
     <div class="form-group">
       <label for="name">Project Name</label>
-      <input autofocus class="project-name-input" type="text" id="name" placeholder="Enter Project Name" required minlength="3" maxlength="15">
+      <input autofocus class="project-name-input" type="text" id="name" placeholder="Enter Project Name" required minlength="3" maxlength="15" />
     </div>
     <div class="project-buttons">
       <button type="button" class="project-cancel-btn">Cancel</button>
@@ -28,11 +28,11 @@
     <h1>New Task</h1>
     <div class="form-group-todos">
       <label for="todo-name">Task Name</label>
-      <input autofocus class="todo-name-input" type="text" id="todo-name" placeholder="Enter Task Name" required minlength="3" maxlength="25">
+      <input autofocus class="todo-name-input" type="text" id="todo-name" placeholder="Enter Task Name" required minlength="3" maxlength="25" />
       <label for="todo-description">Task Description</label>
-      <input class="task-description-input" type="text" id="todo-description" placeholder="Enter Task Description" required minlength="3" maxlength="40">
+      <input class="task-description-input" type="text" id="todo-description" placeholder="Enter Task Description" required minlength="3" maxlength="100" />
       <label for="todo-date">Task Due Date</label>
-      <input class="task-duedate-input" type="date" id="todo-date" placeholder="Enter Task Due Date" required>
+      <input class="task-duedate-input" type="date" id="todo-date" placeholder="Enter Task Due Date" required />
       <label for="priority">Task Priority</label>
       <select required name="Task Priority" id="priority">
         <option value="First">First</option>
@@ -50,11 +50,11 @@
     <h1 class="current-todo-name"></h1>
     <div class="form-group-todos-edit">
       <label for="todo-name-edit">New Task Name</label>
-      <input autofocus class="todo-name-input-edit" type="text" id="todo-name-edit" placeholder="Enter New Task Name" required minlength="3" maxlength="25">
+      <input autofocus class="todo-name-input-edit" type="text" id="todo-name-edit" placeholder="Enter New Task Name" required minlength="3" maxlength="25" />
       <label for="todo-description-edit">New Task Description</label>
-      <input class="task-description-input-edit" type="text" id="todo-description-edit" placeholder="Enter New Task Description" required minlength="3" maxlength="40">
+      <input class="task-description-input-edit" type="text" id="todo-description-edit" placeholder="Enter New Task Description" required minlength="3" maxlength="100" />
       <label for="todo-date-edit">Task Due Date</label>
-      <input class="task-duedate-input-edit" type="date" id="todo-date-edit" placeholder="Enter Task Due Date" required>
+      <input class="task-duedate-input-edit" type="date" id="todo-date-edit" placeholder="Enter Task Due Date" required />
       <label for="priority-edit">Task Priority</label>
       <select required name="Task Priority" id="priority-edit">
         <option value="First">First</option>
@@ -67,6 +67,18 @@
       <button type="submit" class="todo-submit-btn-edit">Edit Task</button>
     </div>
   </form>
+  <!-- TODO details Modal -->
+  <div class="details-container">
+    <div class="details-header">
+      <h1 class="details-name">TODO name</h1>
+      <i class="far fa-times-circle"></i>
+    </div>
+    <div class="details-wrapper">
+      <div class="details-project-name">Project</div>
+      <div class="details-description">Description:</div>
+      <div class="details-priority">random</div>
+    </div>
+  </div>
   <!-- NAVBAR -->
   <div class="container">
     <nav>
@@ -110,7 +122,6 @@
           </div>
           <!-- TODOS container -->
           <div class="todos-container">
-
             <!-- <div class="todo">
               <div class="todo-name-checkbox">
                 <input type="checkbox" name="isCompleted" id="completed">
@@ -128,10 +139,8 @@
               <p>New Task</p>
             </div>
           </div>
-
         </div>
       </div>
-
     </main>
   </div>
 
