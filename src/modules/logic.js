@@ -28,7 +28,6 @@ function getStorageData() {
     : localStorage.setItem("data", JSON.stringify(data));
 }
 
-
 function updateLocalStorage() {
   localStorage.setItem("data", JSON.stringify(data));
 }
@@ -55,6 +54,7 @@ function createNewTodo(todoInput, currentProjectIndex) {
 
 function deleteProjectFromDataArray(index) {
   data.projects.splice(index, 1);
+  clearCurrentProject();
 }
 
 function deleteTodoFromData(index, projectIndex) {
@@ -107,6 +107,12 @@ function setNewTodoProperties(todoInput, projectIndex, index) {
   data.projects[projectIndex].todos[index].priority = todoPriority;
 }
 
+function clearCurrentProject() {
+  if (data.projects.length === 0) {
+    data.currentProject = null;
+  }
+}
+
 export default {
   data,
   createNewProject,
@@ -121,4 +127,5 @@ export default {
   todoToggleData,
   getStorageData,
   updateLocalStorage,
+  clearCurrentProject,
 };

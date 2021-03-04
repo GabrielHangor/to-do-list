@@ -1,4 +1,3 @@
-import DOM from "./modules/DOM.js";
 import DOMCtrl from "./modules/DOM.js";
 import Logic from "./modules/logic.js";
 
@@ -96,13 +95,12 @@ function todoToggleCompleted(e) {
   }
 }
 
-// возможность создания/редактирования  тасков будет только внутри страниц проектов, не на главной/отсортированной
-
 function deleteProject(e) {
   if (e.target.id === "delete-project-btn") {
     const index = DOMCtrl.getProjectIndex(e);
     Logic.deleteProjectFromDataArray(index);
     DOMCtrl.renderSidebar(Logic.data.projects);
+    DOMCtrl.addTodoBtnDisable(Logic.data);
     Logic.updateLocalStorage();
   }
 }
@@ -129,8 +127,8 @@ function displayCurrentProject(e) {
     DOMCtrl.renderCurrentProjectTodos(
       Logic.data.projects[currentProjectIndex].todos
     );
+    DOMCtrl.addTodoBtnEnable();
     Logic.updateLocalStorage();
-    console.log(Logic.data);
   }
 }
 
@@ -151,9 +149,11 @@ function hideTodoDetails(e) {
 }
 
 function onLoadRender() {
-  DOMCtrl.renderSidebar(Logic.data.projects);
+  if (Logic.data.projects) {
+    DOMCtrl.renderSidebar(Logic.data.projects);
+  }
 
-  if (Logic.data.currentProject) {
+  if (Logic.data.currentProject && Logic.data.projects.length !== 0) {
     DOMCtrl.renderCurrentProjectName(Logic.data);
     const currentProjectIndex = Logic.getCurrentProjectIndex();
     DOMCtrl.renderCurrentProjectTodos(
@@ -166,7 +166,9 @@ function init() {
   loadEventListeners();
   Logic.getStorageData();
   onLoadRender();
+  DOMCtrl.addTodoBtnDisable(Logic.data);
   DOMCtrl.restrictPreviousDate();
+  console.log(Logic.data);
 }
 
 init();

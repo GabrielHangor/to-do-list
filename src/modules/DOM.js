@@ -142,18 +142,24 @@ function renderCurrentProjectName(data) {
   UISelectors.currentProjectName.textContent = data.currentProject.name;
 }
 
+function addTodoBtnDisable(data) {
+  if (data.projects.length === 0 || !data.currentProject) {
+    UISelectors.todoAddBtn.classList.toggle("add-todo-disabled");
+    UISelectors.currentProjectName.textContent ="Add New Project Or Select One";
+  } 
+}
+
+function addTodoBtnEnable() {
+  UISelectors.todoAddBtn.classList.remove("add-todo-disabled");
+}
+
 function renderCurrentProjectTodos(todos) {
   clearTodoList();
 
+  
+
   todos.forEach((todo, index) => {
-    const {
-      name,
-      description,
-      date,
-      priority,
-      projectName,
-      isCompleted,
-    } = todo;
+    const { name, date, isCompleted } = todo;
 
     const todoEl = document.createElement("div");
     todoEl.className = "todo";
@@ -249,4 +255,6 @@ export default {
   restrictPreviousDate,
   toggleTodoDetailsModal,
   populateTodoDetails,
+  addTodoBtnDisable,
+  addTodoBtnEnable
 };
