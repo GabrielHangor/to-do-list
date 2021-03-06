@@ -5,29 +5,17 @@ function loadEventListeners() {
   const UISelectors = DOMCtrl.getUISelectors();
 
   UISelectors.menuBars.addEventListener("click", DOMCtrl.toggleSidebar);
-  UISelectors.addProjectBtn.addEventListener(
-    "click",
-    DOMCtrl.toggleProjectModal
-  );
-  UISelectors.projectCancelBtn.addEventListener(
-    "click",
-    DOMCtrl.toggleProjectModal
-  );
+  UISelectors.addProjectBtn.addEventListener("click",DOMCtrl.toggleProjectModal);
+  UISelectors.projectCancelBtn.addEventListener("click",DOMCtrl.toggleProjectModal);
   UISelectors.todoAddBtn.addEventListener("click", DOMCtrl.toggleTodoModal);
   UISelectors.todoCancelBtn.addEventListener("click", DOMCtrl.toggleTodoModal);
-  UISelectors.todoEditCancelBtn.addEventListener(
-    "click",
-    DOMCtrl.toggleTodoEditModal
-  );
+  UISelectors.todoEditCancelBtn.addEventListener("click",DOMCtrl.toggleTodoEditModal);
   UISelectors.todoModalEl.addEventListener("submit", todoAddSubmit);
   UISelectors.projectModalEl.addEventListener("submit", projectAddSubmit);
   UISelectors.projectsListEl.addEventListener("click", deleteProject);
   UISelectors.projectsListEl.addEventListener("click", displayCurrentProject);
   UISelectors.todosContainer.addEventListener("click", deleteTodo);
-  UISelectors.todosContainer.addEventListener(
-    "click",
-    togglePopulateTodoEditModal
-  );
+  UISelectors.todosContainer.addEventListener("click",togglePopulateTodoEditModal);
   UISelectors.todoEditModalEl.addEventListener("submit", todoEditSubmit);
   UISelectors.todosContainer.addEventListener("change", todoToggleCompleted);
   UISelectors.todosContainer.addEventListener("mouseover", displayTodoDetails);
@@ -48,12 +36,9 @@ function todoAddSubmit(e) {
   const todoInput = DOMCtrl.getTodoInput();
   const currentProjectIndex = Logic.getCurrentProjectIndex();
   Logic.createNewTodo(todoInput, currentProjectIndex);
-  DOMCtrl.renderCurrentProjectTodos(
-    Logic.data.projects[currentProjectIndex].todos
-  );
+  DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
   DOMCtrl.renderSidebar(Logic.data.projects);
   Logic.updateLocalStorage();
-
   DOMCtrl.toggleTodoModal();
   e.preventDefault();
 }
@@ -63,11 +48,8 @@ function todoEditSubmit(e) {
   const currentProjectIndex = Logic.getCurrentProjectIndex();
   const index = Logic.getCurrentTodoIndex(currentProjectIndex);
   Logic.setNewTodoProperties(todoInput, currentProjectIndex, index);
-  DOMCtrl.renderCurrentProjectTodos(
-    Logic.data.projects[currentProjectIndex].todos
-  );
+  DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
   Logic.updateLocalStorage();
-
   DOMCtrl.toggleTodoEditModal();
   e.preventDefault();
 }
@@ -88,9 +70,7 @@ function todoToggleCompleted(e) {
     const currentProjectIndex = Logic.getCurrentProjectIndex();
     const index = DOMCtrl.getTodoIndex(e);
     Logic.todoToggleData(currentProjectIndex, index);
-    DOMCtrl.renderCurrentProjectTodos(
-      Logic.data.projects[currentProjectIndex].todos
-    );
+    DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
     Logic.updateLocalStorage();
   }
 }
@@ -98,9 +78,8 @@ function todoToggleCompleted(e) {
 function deleteProject(e) {
   if (e.target.id === "delete-project-btn") {
     const index = DOMCtrl.getProjectIndex(e);
-    const currentProjectName = Logic.data.currentProject.name;
     Logic.deleteProjectFromDataArray(index);
-    Logic.deleteInvalidCurrentProject(currentProjectName);
+    Logic.deleteInvalidCurrentProject();
     DOMCtrl.renderSidebar(Logic.data.projects);
     DOMCtrl.addTodoBtnDisable(Logic.data);
     Logic.updateLocalStorage();
@@ -112,9 +91,7 @@ function deleteTodo(e) {
     const index = DOMCtrl.getTodoIndex(e);
     const currentProjectIndex = Logic.getCurrentProjectIndex();
     Logic.deleteTodoFromData(index, currentProjectIndex);
-    DOMCtrl.renderCurrentProjectTodos(
-      Logic.data.projects[currentProjectIndex].todos
-    );
+    DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
     DOMCtrl.renderSidebar(Logic.data.projects);
     Logic.updateLocalStorage();
   }
@@ -126,9 +103,7 @@ function displayCurrentProject(e) {
     Logic.setCurrentProject(index);
     DOMCtrl.renderCurrentProjectName(Logic.data);
     const currentProjectIndex = Logic.getCurrentProjectIndex();
-    DOMCtrl.renderCurrentProjectTodos(
-      Logic.data.projects[currentProjectIndex].todos
-    );
+    DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
     DOMCtrl.addTodoBtnEnable();
     Logic.updateLocalStorage();
   }
@@ -158,12 +133,9 @@ function onLoadRender() {
   if (Logic.data.currentProject && Logic.data.projects.length !== 0) {
     DOMCtrl.renderCurrentProjectName(Logic.data);
     const currentProjectIndex = Logic.getCurrentProjectIndex();
-    DOMCtrl.renderCurrentProjectTodos(
-      Logic.data.projects[currentProjectIndex].todos
-    );
+    DOMCtrl.renderCurrentProjectTodos(Logic.data.projects[currentProjectIndex].todos);
   }
 }
-
 
 function init() {
   loadEventListeners();
@@ -171,7 +143,6 @@ function init() {
   onLoadRender();
   DOMCtrl.addTodoBtnDisable(Logic.data);
   DOMCtrl.restrictPreviousDate();
-  console.log(Logic.data);
 }
 
 init();

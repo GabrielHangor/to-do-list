@@ -94,9 +94,8 @@ function getCurrentTodoIndex(projectIndex) {
 }
 
 function todoToggleData(projectIndex, index) {
-  data.projects[projectIndex].todos[index].isCompleted = !data.projects[
-    projectIndex
-  ].todos[index].isCompleted;
+  data.projects[projectIndex].todos[index].isCompleted = 
+  !data.projects[projectIndex].todos[index].isCompleted;
 }
 
 function setNewTodoProperties(todoInput, projectIndex, index) {
@@ -113,9 +112,9 @@ function clearCurrentProject() {
   }
 }
 
-function deleteInvalidCurrentProject(currentProjectName) {
+function deleteInvalidCurrentProject() {
   const projectNames = data.projects.filter((project) => {
-    return project.name === currentProjectName;
+    return project.name === data.currentProject.name;
   });
 
   projectNames.length === 0 ? (data.currentProject = null) : null;

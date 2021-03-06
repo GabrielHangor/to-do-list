@@ -23,9 +23,7 @@ const UISelectors = {
   todoEditModalEl: document.querySelector(".form-container-todo-edit"),
   todoEditCancelBtn: document.querySelector(".todo-cancel-btn-edit"),
   todoNameEditInput: document.querySelector(".todo-name-input-edit"),
-  todoDescriptionEditInput: document.querySelector(
-    ".task-description-input-edit"
-  ),
+  todoDescriptionEditInput: document.querySelector(".task-description-input-edit"),
   todoDateEditInput: document.querySelector(".task-duedate-input-edit"),
   todoPriorityEditInput: document.querySelector("#priority-edit"),
   currentTodoName: document.querySelector(".current-todo-name"),
@@ -77,9 +75,7 @@ function toggleTodoModal() {
 }
 
 function toggleTodoEditModal() {
-  UISelectors.todoEditModalEl.classList.toggle(
-    "form-container-todo-edit-hidden"
-  );
+  UISelectors.todoEditModalEl.classList.toggle("form-container-todo-edit-hidden");
   UISelectors.container.classList.toggle("container-opaque");
 }
 
@@ -145,8 +141,8 @@ function renderCurrentProjectName(data) {
 function addTodoBtnDisable(data) {
   if (data.projects.length === 0 || !data.currentProject) {
     UISelectors.todoAddBtn.classList.toggle("add-todo-disabled");
-    UISelectors.currentProjectName.textContent =
-      "Add New Project Or Select One";
+    UISelectors.currentProjectName.textContent = "Add New Project Or Select One";
+    clearTodoList();
   }
 }
 
