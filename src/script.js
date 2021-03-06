@@ -98,7 +98,9 @@ function todoToggleCompleted(e) {
 function deleteProject(e) {
   if (e.target.id === "delete-project-btn") {
     const index = DOMCtrl.getProjectIndex(e);
+    const currentProjectName = Logic.data.currentProject.name;
     Logic.deleteProjectFromDataArray(index);
+    Logic.deleteInvalidCurrentProject(currentProjectName);
     DOMCtrl.renderSidebar(Logic.data.projects);
     DOMCtrl.addTodoBtnDisable(Logic.data);
     Logic.updateLocalStorage();
@@ -161,6 +163,7 @@ function onLoadRender() {
     );
   }
 }
+
 
 function init() {
   loadEventListeners();

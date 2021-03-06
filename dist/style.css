@@ -363,6 +363,10 @@ main {
   cursor: pointer;
 }
 
+.todo-name-events-disabled {
+  pointer-events: none;
+}
+
 .todo-name:hover {
   filter: brightness(10%);
 }

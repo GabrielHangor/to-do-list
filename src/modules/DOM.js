@@ -145,8 +145,9 @@ function renderCurrentProjectName(data) {
 function addTodoBtnDisable(data) {
   if (data.projects.length === 0 || !data.currentProject) {
     UISelectors.todoAddBtn.classList.toggle("add-todo-disabled");
-    UISelectors.currentProjectName.textContent ="Add New Project Or Select One";
-  } 
+    UISelectors.currentProjectName.textContent =
+      "Add New Project Or Select One";
+  }
 }
 
 function addTodoBtnEnable() {
@@ -155,8 +156,6 @@ function addTodoBtnEnable() {
 
 function renderCurrentProjectTodos(todos) {
   clearTodoList();
-
-  
 
   todos.forEach((todo, index) => {
     const { name, date, isCompleted } = todo;
@@ -194,6 +193,7 @@ function renderCurrentProjectTodos(todos) {
       checkbox.setAttribute("checked", "checked");
       todoEl.classList.toggle("todo-opaque");
       todoDateBtns.classList.toggle("todo-date-btns-disabled");
+      todoName.classList.toggle("todo-name-events-disabled");
     }
 
     todoNameCheckBox.append(checkbox, todoName);
@@ -256,5 +256,5 @@ export default {
   toggleTodoDetailsModal,
   populateTodoDetails,
   addTodoBtnDisable,
-  addTodoBtnEnable
+  addTodoBtnEnable,
 };

@@ -113,6 +113,14 @@ function clearCurrentProject() {
   }
 }
 
+function deleteInvalidCurrentProject(currentProjectName) {
+  const projectNames = data.projects.filter((project) => {
+    return project.name === currentProjectName;
+  });
+
+  projectNames.length === 0 ? (data.currentProject = null) : null;
+}
+
 export default {
   data,
   createNewProject,
@@ -128,4 +136,5 @@ export default {
   getStorageData,
   updateLocalStorage,
   clearCurrentProject,
+  deleteInvalidCurrentProject,
 };
