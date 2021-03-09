@@ -117,7 +117,9 @@ function deleteInvalidCurrentProject() {
     return project.name === data.currentProject.name;
   });
 
-  projectNames.length === 0 ? (data.currentProject = null) : null;
+  if (projectNames.length === 0) {
+    data.currentProject = null;
+  }
 }
 
 export default {

@@ -1,13 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 
+:root {
+  --main-font-color: #334b48;
+  --secondary-font-color: red;
+  --main-background-color: whitesmoke;
+  --secondary-background-color: rgb(236, 236, 236);
+  --delete-project-basket-color: rgb(255, 110, 110);
+  --menu-icons-hover-color: white;
+  --basic-hover-color: rgba(212, 212, 212, 0.342);
+  --cancel-btn-background-color: rgb(255, 212, 212);
+  --add-btn-background-color: rgb(215, 255, 189);
+}
+
 body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: "Roboto", sans-serif;
-  color: #f1f0e9;
-  background-color: whitesmoke;
-  color: #334b48;
+  background-color: var(--main-background-color);
+  color: var(--main-font-color);
 }
 
 .container {
@@ -28,6 +39,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   height: 6vh;
+  background-color: var(--secondary-background-color);
 }
 
 .nav-left {
@@ -40,11 +52,11 @@ nav {
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 10px;
-  color: #334b48;
+  color: var(--main-font-color);
 }
 
 .nav-left > i:hover {
-  background-color: white;
+  background-color: var(--menu-icons-hover-color);
 }
 
 .nav-right {
@@ -56,11 +68,11 @@ nav {
   cursor: pointer;
   padding: 0.3rem;
   border-radius: 10px;
-  color: #334b48;
+  color: var(--main-font-color);
 }
 
 .nav-right > a > i:hover {
-  background-color: white;
+  background-color: var(--menu-icons-hover-color);
 }
 
 .menu-bars {
@@ -69,13 +81,13 @@ nav {
 }
 
 .menu-bars:hover {
-  background-color: white;
+  background-color: var(--menu-icons-hover-color);
 }
 
 .bar1,
 .bar2,
 .bar3 {
-  background-color: #6b6b6b;
+  background-color: var(--main-font-color);
   width: 30px;
   height: 2px;
   margin: 8px 6px;
@@ -105,7 +117,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(252, 252, 252);
+  background-color: var(--secondary-background-color);
 }
 
 .main-content {
@@ -175,11 +187,11 @@ nav {
 }
 
 .project:hover {
-  background-color: rgba(212, 212, 212, 0.342);
+  background-color: var(--menu-icons-hover-color);
 }
 
 .project-todos-number {
-  background-color: rgb(219, 219, 219);
+  background-color: var(--menu-icons-hover-color);
   display: inline-block;
   border-radius: 50%;
   width: 20px;
@@ -198,7 +210,7 @@ nav {
 
 #delete-project-btn {
   cursor: pointer;
-  color: rgb(255, 179, 179);
+  color: var(--delete-project-basket-color);
   font-size: 1.2rem;
 }
 
@@ -209,7 +221,7 @@ button {
   border: none;
   border-radius: 100%;
   color: rgb(5, 5, 5);
-  background: rgb(212, 231, 252);
+  background: var(--menu-icons-hover-color);
   padding: 0.4rem 0.8rem;
   box-shadow: 0 0.3rem rgba(175, 175, 175, 0.65);
   line-height: 50%;
@@ -230,7 +242,7 @@ button:active {
   width: 500px;
   max-width: 90%;
   height: 300px;
-  background: whitesmoke;
+  background-color: var(--main-background-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -277,7 +289,7 @@ button:active {
   padding: 0;
   width: 120px;
   height: 2.5rem;
-  background-color: rgb(215, 255, 189);
+  background-color: var(--add-btn-background-color);
 }
 
 .project-cancel-btn {
@@ -286,7 +298,7 @@ button:active {
   padding: 0;
   width: 120px;
   height: 2.5rem;
-  background-color: rgb(255, 212, 212);
+  background-color: var(--cancel-btn-background-color);
 }
 
 /* MAIN CONTENT */
@@ -376,7 +388,7 @@ main {
 }
 
 .todo-date-btns > .todo-date {
-  color: red;
+  color: var(--secondary-font-color);
   padding: 0 0.3rem 0 0.3rem;
 }
 
@@ -397,6 +409,7 @@ main {
   align-items: center;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  border-radius: 1rem;
 }
 
 .add-todo-disabled {
@@ -405,7 +418,7 @@ main {
 }
 
 .add-todo:hover {
-  background-color: rgba(212, 212, 212, 0.342);
+  background-color: var(--menu-icons-hover-color);
 }
 
 .add-todo > p {
@@ -425,7 +438,7 @@ main {
   width: 500px;
   max-width: 90%;
   height: 600px;
-  background: whitesmoke;
+  background-color: var(--main-background-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -485,7 +498,7 @@ main {
   padding: 0;
   width: 120px;
   height: 2.5rem;
-  background-color: rgb(255, 212, 212);
+  background-color: var(--cancel-btn-background-color);
 }
 
 .todo-submit-btn,
@@ -495,7 +508,7 @@ main {
   padding: 0;
   width: 120px;
   height: 2.5rem;
-  background-color: rgb(215, 255, 189);
+  background-color: var(--add-btn-background-color);
 }
 
 /* TODO details modal */
@@ -504,7 +517,7 @@ main {
   width: 700px;
   max-width: 90%;
   height: 300px;
-  background: whitesmoke;
+  background-color: var(--main-background-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -552,4 +565,51 @@ main {
 .details-container-hidden {
   pointer-events: none;
   opacity: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .main-content-container {
+    width: 99%;
+  }
+
+  .current-project-name {
+    font-size: 1.2rem;
+  }
+
+  .add-todo > p {
+    font-size: 1.2rem;
+  }
+
+  .projects-header > p {
+    font-size: 1.2rem;
+  }
+
+  button {
+    cursor: pointer;
+    font-size: 2rem;
+    height: 2rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .sidebar {
+    width: 300px;
+    position: absolute;
+    z-index: 999;
+    transform: translateX(-300px);
+    height: 100%;
+    opacity: .97;
+  }
+
+  .main-content {
+    width: 100%;
+    z-index: 1;
+  }
+
+  .sidebar-toggle {
+    transform: translateX(0);
+  }
+
+  .main-content-toggle {
+    margin-left: 0;
+  }
 }
