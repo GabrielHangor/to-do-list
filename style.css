@@ -595,9 +595,8 @@ main {
     width: 300px;
     position: absolute;
     z-index: 999;
-    transform: translateX(-300px);
     height: 100%;
-    opacity: .97;
+    opacity: 0.97;
   }
 
   .main-content {
@@ -606,7 +605,7 @@ main {
   }
 
   .sidebar-toggle {
-    transform: translateX(0);
+    transform: translateX(-300px);
   }
 
   .main-content-toggle {
